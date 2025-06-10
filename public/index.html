@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irish Vehicle Registry API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .header {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .endpoint {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 5px solid #667eea;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        .test-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .test-link {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .test-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .feature {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .health-check {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .health-link {
+            background: #28a745;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚗 Irish Vehicle Registry API</h1>
+            <p>Demo API for Algorand Blockchain Integration</p>
+        </div>
+        
+        <div class="endpoint">
+            <h3>🔗 API Endpoint</h3>
+            <code>GET /api/vehicles/{registration}</code>
+            <p>Retrieve comprehensive vehicle information by Irish registration number</p>
+        </div>
+        
+        <div class="health-check">
+            <a href="/api/health" class="health-link">🏥 API Health Check</a>
+        </div>
+        
+        <h3>🧪 Test the API:</h3>
+        <div class="test-links">
+            <a href="/api/vehicles/12D12345" class="test-link">
+                <strong>Toyota Corolla</strong><br>
+                Registration: 12D12345
+            </a>
+            <a href="/api/vehicles/13C98876" class="test-link">
+                <strong>VW Golf</strong><br>
+                Registration: 13C98876
+            </a>
+            <a href="/api/vehicles/21G99999" class="test-link">
+                <strong>Tesla Model 3</strong><br>
+                Registration: 21G99999
+            </a>
+        </div>
+        
+        <div class="endpoint">
+            <h3>🚀 Blockchain Features</h3>
+            <div class="features">
+                <div class="feature">
+                    <h4>🔗 VIN Tracking</h4>
+                    <p>Unique vehicle identification</p>
+                </div>
+                <div class="feature">
+                    <h4>👥 Ownership History</h4>
+                    <p>Complete ownership chain</p>
+                </div>
+                <div class="feature">
+                    <h4>🔧 Service Records</h4>
+                    <p>Verification hashes included</p>
+                </div>
+                <div class="feature">
+                    <h4>⛓️ Algorand Ready</h4>
+                    <p>Smart contract integration</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="endpoint">
+            <h3>📋 Available Registrations</h3>
+            <ul style="columns: 2; column-gap: 40px;">
+                <li><strong>12D12345</strong> - Toyota Corolla 2012</li>
+                <li><strong>13C98876</strong> - Volkswagen Golf 2013</li>
+                <li><strong>21G99999</strong> - Tesla Model 3 2021</li>
+            </ul>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px; color: #666;">
+            <p>🎓 Educational Demo for Blockchain Development<br>
+            Ready for Algorand Smart Contract Integration</p>
+        </div>
+    </div>
+</body>
+</html>
