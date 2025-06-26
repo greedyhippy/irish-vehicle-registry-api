@@ -234,6 +234,57 @@ const vehicleDatabase = {
       { date: '2024-04-20', mileage: 6000, service: 'First Check', garage: 'BMW Limerick', cost: 150, verificationHash: '8ab123c4d5e6f78' }
     ],
 
+  },
+  // Add missing vehicles that the frontend expects
+  '16WX7890': {
+    registration: '16WX7890',
+    make: 'Peugeot',
+    model: '308',
+    year: 2016,
+    engineSize: '1.6L',
+    fuelType: 'Diesel',
+    colour: 'Red',
+    dateFirstRegistered: '2016-05-10',
+    currentMileage: 125000,
+    nctExpiry: '2026-05-10',
+    taxExpiry: '2025-10-31',
+    insuranceStatus: 'Valid',
+    previousOwners: 2,
+    estimatedValue: 14500,
+    vin: 'VF3LCRFGF98123456',
+    ownershipHistory: [
+      { owner: 'Marie Byrne', from: '2016-05-10', to: '2020-02-15', address: 'Waterford' },
+      { owner: 'Kevin McCarthy', from: '2020-02-15', to: '2023-09-20', address: 'Cork' },
+      { owner: 'Aoife Murphy', from: '2023-09-20', to: 'current', address: 'Dublin' }
+    ],
+    serviceHistory: [
+      { date: '2024-02-12', mileage: 123000, service: 'Annual Service', garage: 'Peugeot Cork', cost: 220, verificationHash: 'f789ab123c4d5e6' },
+      { date: '2023-11-05', mileage: 118000, service: 'NCT Test', garage: 'NCT Centre Cork', cost: 55, verificationHash: 'g789ab123c4d5e6f' }
+    ]
+  },
+  '23G97531': {
+    registration: '23G97531',
+    make: 'Lexus',
+    model: 'IS300h',
+    year: 2023,
+    engineSize: '2.5L Hybrid',
+    fuelType: 'Hybrid',
+    colour: 'Grey',
+    dateFirstRegistered: '2023-08-20',
+    currentMileage: 15000,
+    nctExpiry: '2031-08-20',
+    taxExpiry: '2025-12-31',
+    insuranceStatus: 'Valid',
+    previousOwners: 1,
+    estimatedValue: 52000,
+    vin: 'JTHBW1GG3P5123456',
+    ownershipHistory: [
+      { owner: 'Corporate Fleet Solutions Ltd', from: '2023-08-20', to: '2024-03-10', address: 'Dublin' },
+      { owner: 'Cian O\'Sullivan', from: '2024-03-10', to: 'current', address: 'Galway' }
+    ],
+    serviceHistory: [
+      { date: '2024-06-15', mileage: 12000, service: 'Six Month Check', garage: 'Lexus Dublin', cost: 180, verificationHash: 'h789ab123c4d5e6f' }
+    ]
   }
   // Add all your other vehicles here...
 };
