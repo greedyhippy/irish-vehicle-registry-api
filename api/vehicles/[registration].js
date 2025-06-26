@@ -29,39 +29,50 @@ const carImageMap = {
 };
 
 // Function to get vehicle image URL
-const getVehicleImage = (make, model) => {
+const getVehicleImage = (make, model, req) => {
   const normalizedMake = make.toLowerCase().replace(/\s+/g, '_');
   const normalizedModel = model.toLowerCase().replace(/\s+/g, '_');
+  
+  // Get the base URL from the request
+  const protocol = req.headers['x-forwarded-proto'] || 'https';
+  const host = req.headers.host || 'irish-vehicle-registry-api.vercel.app';
+  const baseUrl = `${protocol}://${host}`;
+  
+  // Helper function to convert relative path to absolute URL
+  const toAbsoluteUrl = (relativePath) => `${baseUrl}${relativePath}`;
   
   // Try exact make_model match
   let key = `${normalizedMake}_${normalizedModel}`;
   if (carImageMap[key]) {
+    const absoluteUrl = toAbsoluteUrl(carImageMap[key]);
     return {
-      imageUrl: carImageMap[key],
-      thumbnailUrl: carImageMap[key] // Same image for thumbnail since they're local
+      imageUrl: absoluteUrl,
+      thumbnailUrl: absoluteUrl // Same image for thumbnail since they're local
     };
   }
   
   // Try with space instead of underscore for make
   key = `${make.toLowerCase()}_${normalizedModel}`;
   if (carImageMap[key]) {
+    const absoluteUrl = toAbsoluteUrl(carImageMap[key]);
     return {
-      imageUrl: carImageMap[key],
-      thumbnailUrl: carImageMap[key]
+      imageUrl: absoluteUrl,
+      thumbnailUrl: absoluteUrl
     };
   }
   
   // Try just the make
   const makeKeys = Object.keys(carImageMap).filter(k => k.startsWith(normalizedMake));
   if (makeKeys.length > 0) {
+    const absoluteUrl = toAbsoluteUrl(carImageMap[makeKeys[0]]);
     return {
-      imageUrl: carImageMap[makeKeys[0]],
-      thumbnailUrl: carImageMap[makeKeys[0]]
+      imageUrl: absoluteUrl,
+      thumbnailUrl: absoluteUrl
     };
   }
   
   // Fallback to generic car image (using a working fallback)
-  const fallbackUrl = '/vehicle-images/toyota-corolla-2012-silver.jpg';
+  const fallbackUrl = toAbsoluteUrl('/vehicle-images/toyota-corolla-2012-silver.jpg');
   return {
     imageUrl: fallbackUrl,
     thumbnailUrl: fallbackUrl
@@ -292,7 +303,7 @@ export default function handler(req, res) {
   }
 
   // Get vehicle images
-  const vehicleImages = getVehicleImage(vehicle.make, vehicle.model);
+  const vehicleImages = getVehicleImage(vehicle.make, vehicle.model, req);
 
   // Calculate data integrity hash
   const dataHash = generateSimpleHash(JSON.stringify({
@@ -316,7 +327,7 @@ export default function handler(req, res) {
       requestTimestamp: new Date().toISOString(),
       dataSource: 'Irish Vehicle Registry Demo API',
       blockchainReady: true,
-      imageSource: 'Unsplash API',
+      imageSource: 'Locally Hosted Vehicle Images',
       disclaimer: 'This is demo data for educational blockchain integration purposes only'
     }
   };
