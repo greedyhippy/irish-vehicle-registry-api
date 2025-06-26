@@ -1,64 +1,31 @@
 // api/vehicles/[registration].js - Enhanced with image functionality
 
-// Car image mapping using publicly available images
+// Car image mapping using locally hosted vehicle images
 const carImageMap = {
-  // Toyota models
-  'toyota_corolla': 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=500&h=300&fit=crop',
+  // Toyota models - 2012 Silver Corolla
+  'toyota_corolla': '/vehicle-images/toyota-corolla-2012-silver.jpg',
   
-  // Volkswagen models
-  'volkswagen_golf': 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=500&h=300&fit=crop',
+  // Volkswagen models - 2013 Blue Golf
+  'volkswagen_golf': '/vehicle-images/volkswagen-golf-2013-blue.jpg',
   
-  // Tesla models
-  'tesla_model 3': 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=500&h=300&fit=crop',
-  'tesla_model_3': 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=500&h=300&fit=crop',
+  // Tesla models - 2021 White Model 3
+  'tesla_model 3': '/vehicle-images/tesla-model3-2021-white.jpg',
+  'tesla_model_3': '/vehicle-images/tesla-model3-2021-white.jpg',
   
-  // Mercedes-Benz models
-  'mercedes-benz_c220': 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=500&h=300&fit=crop',
-  'mercedes_c220': 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=500&h=300&fit=crop',
+  // Mercedes-Benz models - 2014 Black C220
+  'mercedes-benz_c220': '/vehicle-images/mercedes-c220-2014-black.jpg',
+  'mercedes_c220': '/vehicle-images/mercedes-c220-2014-black.jpg',
   
-  // Honda models
-  'honda_civic': 'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=500&h=300&fit=crop',
+  // Peugeot models - 2016 Red 308
+  'peugeot_308': '/vehicle-images/peugeot-308-2016-red.jpg',
   
-  // Peugeot models
-  'peugeot_308': 'https://images.unsplash.com/photo-1494905998402-395d579af36f?w=500&h=300&fit=crop',
+  // Lexus models - 2023 Grey IS300h
+  'lexus_is300h': '/vehicle-images/lexus-is300h-2023-grey.jpg',
+  'lexus_is': '/vehicle-images/lexus-is300h-2023-grey.jpg',
   
-  // Renault models
-  'renault_megane': 'https://images.unsplash.com/photo-1493238792000-8113da705763?w=500&h=300&fit=crop',
-  
-  // Opel models
-  'opel_astra': 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=500&h=300&fit=crop',
-  
-  // Seat models
-  'seat_leon': 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=500&h=300&fit=crop',
-  
-  // Mazda models
-  'mazda_cx-5': 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&h=300&fit=crop',
-  'mazda_cx5': 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&h=300&fit=crop',
-  
-  // Subaru models
-  'subaru_outback': 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&h=300&fit=crop',
-  
-  // Volvo models
-  'volvo_xc60': 'https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=500&h=300&fit=crop',
-  
-  // Lexus models
-  'lexus_is300h': 'https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&h=300&fit=crop',
-  'lexus_is': 'https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&h=300&fit=crop',
-  
-  // BMW models
-  'bmw_ix3': 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=500&h=300&fit=crop',
-  'bmw_i': 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=500&h=300&fit=crop',
-  
-  // Mini models
-  'mini_cooper s': 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&h=300&fit=crop',
-  'mini_cooper': 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&h=300&fit=crop',
-  
-  // Jaguar models
-  'jaguar_xf': 'https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&h=300&fit=crop',
-  
-  // Land Rover models
-  'land rover_discovery': 'https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=500&h=300&fit=crop',
-  'land_rover_discovery': 'https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=500&h=300&fit=crop'
+  // BMW models - 2024 Blue iX3
+  'bmw_ix3': '/vehicle-images/bmw-ix3-2024-blue.jpg',
+  'bmw_i': '/vehicle-images/bmw-ix3-2024-blue.jpg'
 };
 
 // Function to get vehicle image URL
@@ -71,7 +38,7 @@ const getVehicleImage = (make, model) => {
   if (carImageMap[key]) {
     return {
       imageUrl: carImageMap[key],
-      thumbnailUrl: carImageMap[key].replace('w=500&h=300', 'w=150&h=100')
+      thumbnailUrl: carImageMap[key] // Same image for thumbnail since they're local
     };
   }
   
@@ -80,7 +47,7 @@ const getVehicleImage = (make, model) => {
   if (carImageMap[key]) {
     return {
       imageUrl: carImageMap[key],
-      thumbnailUrl: carImageMap[key].replace('w=500&h=300', 'w=150&h=100')
+      thumbnailUrl: carImageMap[key]
     };
   }
   
@@ -89,15 +56,15 @@ const getVehicleImage = (make, model) => {
   if (makeKeys.length > 0) {
     return {
       imageUrl: carImageMap[makeKeys[0]],
-      thumbnailUrl: carImageMap[makeKeys[0]].replace('w=500&h=300', 'w=150&h=100')
+      thumbnailUrl: carImageMap[makeKeys[0]]
     };
   }
   
-  // Fallback to generic car image
-  const fallbackUrl = 'https://images.unsplash.com/photo-1494976688153-ca3ce041d4a4?w=500&h=300&fit=crop';
+  // Fallback to generic car image (using a working fallback)
+  const fallbackUrl = '/vehicle-images/toyota-corolla-2012-silver.jpg';
   return {
     imageUrl: fallbackUrl,
-    thumbnailUrl: fallbackUrl.replace('w=500&h=300', 'w=150&h=100')
+    thumbnailUrl: fallbackUrl
   };
 };
 
