@@ -1,46 +1,64 @@
 // api/vehicles/[registration].js - Enhanced with image functionality
 
-// Car image mapping using more accurate, publicly available images
+// Car image mapping using publicly available images
 const carImageMap = {
-  // Toyota models - Silver 2012 Corolla (better match)
-  'toyota_corolla': 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=500&h=300&fit=crop&q=80',
+  // Toyota models
+  'toyota_corolla': 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=500&h=300&fit=crop',
   
-  // Volkswagen models - Blue 2013 Golf (better match)
-  'volkswagen_golf': 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=500&h=300&fit=crop&q=80',
+  // Volkswagen models
+  'volkswagen_golf': 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=500&h=300&fit=crop',
   
-  // Tesla models - White 2021 Model 3 (perfect match)
-  'tesla_model 3': 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=500&h=300&fit=crop&q=80',
-  'tesla_model_3': 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=500&h=300&fit=crop&q=80',
+  // Tesla models
+  'tesla_model 3': 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=500&h=300&fit=crop',
+  'tesla_model_3': 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=500&h=300&fit=crop',
   
-  // Mercedes-Benz models - Black 2014 C-Class (updated to better match)
-  'mercedes-benz_c220': 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=500&h=300&fit=crop&q=80',
-  'mercedes_c220': 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=500&h=300&fit=crop&q=80',
+  // Mercedes-Benz models
+  'mercedes-benz_c220': 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=500&h=300&fit=crop',
+  'mercedes_c220': 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=500&h=300&fit=crop',
   
-  // Peugeot models - Red 2016 308 (good match)
-  'peugeot_308': 'https://images.unsplash.com/photo-1494905998402-395d579af36f?w=500&h=300&fit=crop&q=80',
+  // Honda models
+  'honda_civic': 'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=500&h=300&fit=crop',
   
-  // Lexus models - Grey 2023 IS300h Hybrid (better luxury sedan match)
-  'lexus_is300h': 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=500&h=300&fit=crop&q=80',
-  'lexus_is': 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=500&h=300&fit=crop&q=80',
+  // Peugeot models
+  'peugeot_308': 'https://images.unsplash.com/photo-1494905998402-395d579af36f?w=500&h=300&fit=crop',
   
-  // BMW models - Blue 2024 iX3 Electric SUV (updated to SUV/crossover)
-  'bmw_ix3': 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&h=300&fit=crop&q=80',
-  'bmw_i': 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&h=300&fit=crop&q=80',
+  // Renault models
+  'renault_megane': 'https://images.unsplash.com/photo-1493238792000-8113da705763?w=500&h=300&fit=crop',
   
-  // Additional fallback entries for better matching
-  'honda_civic': 'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=500&h=300&fit=crop&q=80',
-  'renault_megane': 'https://images.unsplash.com/photo-1493238792000-8113da705763?w=500&h=300&fit=crop&q=80',
-  'opel_astra': 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=500&h=300&fit=crop&q=80',
-  'seat_leon': 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=500&h=300&fit=crop&q=80',
-  'mazda_cx-5': 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&h=300&fit=crop&q=80',
-  'mazda_cx5': 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&h=300&fit=crop&q=80',
-  'subaru_outback': 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&h=300&fit=crop&q=80',
-  'volvo_xc60': 'https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=500&h=300&fit=crop&q=80',
-  'mini_cooper s': 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&h=300&fit=crop&q=80',
-  'mini_cooper': 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&h=300&fit=crop&q=80',
-  'jaguar_xf': 'https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&h=300&fit=crop&q=80',
-  'land rover_discovery': 'https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=500&h=300&fit=crop&q=80',
-  'land_rover_discovery': 'https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=500&h=300&fit=crop&q=80'
+  // Opel models
+  'opel_astra': 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=500&h=300&fit=crop',
+  
+  // Seat models
+  'seat_leon': 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=500&h=300&fit=crop',
+  
+  // Mazda models
+  'mazda_cx-5': 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&h=300&fit=crop',
+  'mazda_cx5': 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&h=300&fit=crop',
+  
+  // Subaru models
+  'subaru_outback': 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&h=300&fit=crop',
+  
+  // Volvo models
+  'volvo_xc60': 'https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=500&h=300&fit=crop',
+  
+  // Lexus models
+  'lexus_is300h': 'https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&h=300&fit=crop',
+  'lexus_is': 'https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&h=300&fit=crop',
+  
+  // BMW models
+  'bmw_ix3': 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=500&h=300&fit=crop',
+  'bmw_i': 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=500&h=300&fit=crop',
+  
+  // Mini models
+  'mini_cooper s': 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&h=300&fit=crop',
+  'mini_cooper': 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&h=300&fit=crop',
+  
+  // Jaguar models
+  'jaguar_xf': 'https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&h=300&fit=crop',
+  
+  // Land Rover models
+  'land rover_discovery': 'https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=500&h=300&fit=crop',
+  'land_rover_discovery': 'https://images.unsplash.com/photo-1544829099-b9a0c5303bea?w=500&h=300&fit=crop'
 };
 
 // Function to get vehicle image URL
@@ -75,8 +93,8 @@ const getVehicleImage = (make, model) => {
     };
   }
   
-  // Fallback to generic car image with higher quality
-  const fallbackUrl = 'https://images.unsplash.com/photo-1494976688153-ca3ce041d4a4?w=500&h=300&fit=crop&q=80';
+  // Fallback to generic car image
+  const fallbackUrl = 'https://images.unsplash.com/photo-1494976688153-ca3ce041d4a4?w=500&h=300&fit=crop';
   return {
     imageUrl: fallbackUrl,
     thumbnailUrl: fallbackUrl.replace('w=500&h=300', 'w=150&h=100')
